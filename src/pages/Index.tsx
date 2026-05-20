@@ -245,12 +245,6 @@ export default function Index() {
                 <div className="text-xs font-mono-app font-bold uppercase tracking-widest" style={{ color: 'var(--text-dim)' }}>
                   Execute Script
                 </div>
-                <div
-                  className="rounded-lg px-4 py-3 font-mono-app text-xs break-all"
-                  style={{ background: 'var(--panel-3)', border: '1px solid var(--border-c)', color: '#60a5fa' }}
-                >
-                  {SCRIPT}
-                </div>
                 <button
                   onClick={handleCopy}
                   className="w-full py-3.5 rounded-xl font-bold text-base tracking-wider transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
