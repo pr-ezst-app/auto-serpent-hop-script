@@ -200,7 +200,7 @@ export default function Index() {
         >
           <div>
             <div className="font-bold text-lg tracking-wide">
-              NTT<span className="neon-text">HUB</span>
+              KINDER<span className="neon-text">HUB</span>
               <span className="ml-2 text-xs font-mono-app px-2 py-0.5 rounded" style={{ background: 'var(--neon-dim)', color: 'var(--neon)', border: '1px solid var(--neon)' }}>
                 v190
               </span>
@@ -235,7 +235,7 @@ export default function Index() {
                 }}
               >
                 <div className="text-5xl mb-3">🐍</div>
-                <div className="text-3xl font-bold mb-1">NTT<span className="neon-text">HUB</span></div>
+                <div className="text-3xl font-bold mb-1">KINDER<span className="neon-text">HUB</span></div>
                 <div className="font-mono-app text-sm mb-1" style={{ color: 'var(--text-dim)' }}>Version 190 · King Legacy</div>
                 <div className="font-mono-app text-xs" style={{ color: 'var(--text-dim)' }}>by NTT Obfuscator</div>
               </div>
