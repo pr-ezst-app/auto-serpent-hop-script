@@ -6,76 +6,63 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* App custom vars */
+    --neon: #00ff88;
+    --neon-dim: #00ff8833;
+    --neon-mid: #00ff8866;
+    --danger: #ff3b5c;
+    --warn: #ffb800;
+    --panel: #0d0d10;
+    --panel-2: #13131a;
+    --panel-3: #1a1a24;
+    --border-c: #ffffff12;
+    --text-dim: #6b7080;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -94,8 +81,261 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
+    background-color: var(--panel);
+    color: #e8eaf0;
+    font-family: "Syne", sans-serif;
   }
+}
+
+/* Neon glow pulse */
+@keyframes neon-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px var(--neon),
+      0 0 20px var(--neon-dim);
+  }
+  50% {
+    box-shadow:
+      0 0 16px var(--neon),
+      0 0 40px var(--neon-mid),
+      0 0 60px var(--neon-dim);
+  }
+}
+
+@keyframes scan-line {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  95%,
+  100% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.7;
+  }
+  97% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.5;
+  }
+  99% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes alert-in {
+  0% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  15% {
+    transform: translateX(-8px);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+  }
+  85% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes counter-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+.flicker {
+  animation: flicker 8s infinite;
+}
+.slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+.alert-in {
+  animation: alert-in 4s ease-in-out forwards;
+}
+.dot-blink {
+  animation: dot-blink 1.2s ease-in-out infinite;
+}
+.rotate-slow {
+  animation: rotate-slow 8s linear infinite;
+}
+
+.font-mono-app {
+  font-family: "Space Mono", monospace;
+}
+
+.glass-panel {
+  background: var(--panel-2);
+  border: 1px solid var(--border-c);
+  border-radius: 12px;
+}
+
+.neon-border {
+  border: 1px solid var(--neon);
+  box-shadow:
+    0 0 12px var(--neon-dim),
+    inset 0 0 12px var(--neon-dim);
+}
+
+.neon-text {
+  color: var(--neon);
+  text-shadow: 0 0 10px var(--neon);
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.scan-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 50%, rgba(0, 255, 136, 0.015) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.danger-text {
+  color: var(--danger);
+  text-shadow: 0 0 8px var(--danger);
+}
+.warn-text {
+  color: var(--warn);
+  text-shadow: 0 0 8px var(--warn);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--border-c);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--neon);
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--neon);
+}
+
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  cursor: pointer;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  background: var(--panel-3);
+  border: 1px solid var(--border-c);
+  border-radius: 26px;
+  transition: all 0.25s;
+}
+.toggle-track::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--text-dim);
+  border-radius: 50%;
+  transition: all 0.25s;
+}
+input:checked + .toggle-track {
+  background: var(--neon-dim);
+  border-color: var(--neon);
+}
+input:checked + .toggle-track::before {
+  left: calc(100% - 20px);
+  background: var(--neon);
+  box-shadow: 0 0 8px var(--neon);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--panel);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-c);
+  border-radius: 4px;
 }
